@@ -7,7 +7,7 @@ import axios from "axios";
 import cartEmptyIcon from "../lib/empty-box-svgrepo-com.svg";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { BookX, BoxSelectIcon, PackageOpen } from "lucide-react";
+import { AlarmCheck, BookX, BoxSelectIcon, PackageOpen } from "lucide-react";
 function CartLayout() {
     const [totalprice, setTotalPrice] = useState(0);
     const nav = useNavigate();
@@ -27,7 +27,10 @@ function CartLayout() {
                         .then(res => ({
                             ...res.data[0],
                             quantity: item.quantity
-                        }))
+                        })).catch(err=>{
+                            console.log(err);
+                            toast.error("Lỗi máy chủ");
+                        })
                 );
 
                 const products = await Promise.all(productRequests); // Đợi tất cả request hoàn thành

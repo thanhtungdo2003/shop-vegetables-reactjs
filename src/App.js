@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainLayout from "./components/MainLayout";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -18,12 +18,16 @@ import AdminUser from "./manager_page_components/AdminUser";
 import OrderPage from "./components/OrderPage";
 import AdminOrder from "./manager_page_components/AdminOrder";
 import MomoConfim from "./components/momoConfirm";
+
 function App() {
+  useEffect(()=>{
+    
+  },[])
   return (
     <>
       <AnimatePresence mode="wait">
 
-        <Router basename="/vegetables-graden">
+        <Router >
           <Routes>
             <Route path="/momo-success/:orderId" element={<MomoConfim/>} />
 

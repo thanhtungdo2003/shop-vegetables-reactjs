@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getUri } from "../js/site";
+import { toast } from "react-toastify";
 
 function ShopFooter() {
     const [cateItems, setCateItem] = useState([]);
@@ -11,6 +12,8 @@ function ShopFooter() {
                 setCateItem(categorys.map((cate, index) => {
                     return <a style={{ cursor: "pointer" }}>{cate.category_name}, </a>;
                 }))
+            }).catch(err => {
+                toast.error(err.status + " Lỗi máy chủ");
             })
     }, [])
     return (

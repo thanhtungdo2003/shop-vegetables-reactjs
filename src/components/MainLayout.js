@@ -9,7 +9,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { getLengthCart } from "../js/site";
 import axios from "axios";
 import userIcon from "../lib/profile-user.png"
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Contact, Facebook, LogOutIcon, Phone, PhoneCall, SearchCheckIcon, Settings2Icon, ShoppingBagIcon, User, UserCog2Icon, UserCogIcon, UserPen, X, Youtube } from "lucide-react";
 
 import Swal from "sweetalert2";
@@ -40,6 +40,8 @@ function MainLayout() {
                     toast.success("Lỗi khi đăng xuất", { position: "top-right" })
                 })
             }
+        }).catch(err=>{
+            toast.error(err.status+" Lỗi");
         })
 
     }
@@ -130,6 +132,7 @@ function MainLayout() {
     }
     return (
         <>
+        <ToastContainer/>
             <div id="container" className="container">
                 <header>
                     <div className="header-container">
