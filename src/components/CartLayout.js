@@ -120,7 +120,7 @@ function CartLayout() {
                         };
 
                         nav("/order-confirm");
-                    }} className="summary-sumbit-btn" style={{ maxWidth: "100%", padding: "5px", backgroundColor: "rgb(233, 49, 49)", color: "white", textAlign: "center", cursor: "pointer" }}>
+                    }} className="summary-sumbit-btn" style={{ maxWidth: "100%", padding: "10px", backgroundColor: "rgb(46, 158, 93)", color: "white", textAlign: "center", cursor: "pointer" }}>
                         ĐẶT HÀNG
                     </button>
                 </div>
