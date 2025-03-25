@@ -111,6 +111,12 @@ function MainLayout() {
                     }}>Tài khoản</button>
                 </>)
             })
+        }else {
+            setAccountNav(<>
+                <button style={{color:"white", width:"150px", cursor:"pointer", height:"40px", backgroundColor:"transparent", fontSize:"16px", fontWeight:"550", outline:"none", border:"none"}} onClick={() => {
+                    nav("/account");
+                }}>Tài khoản</button>
+            </>)
         }
     }, [trigger])
     const search = (query) => {

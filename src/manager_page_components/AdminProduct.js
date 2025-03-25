@@ -1,13 +1,14 @@
 import AdminElementContainer from "./AdminElementContainer";
-import { AlertCircle, Copy, Edit, Eye, EyeOff, FilePlus, Grid2X2, Grid2X2Plus, PlusIcon, PlusSquare, Search, Trash, Trash2, X, XSquare } from "lucide-react";
+import { AlertCircle, Copy, Edit, Eye, EyeOff, FilePlus, Grid2X2, Grid2X2Plus, PlusIcon, PlusSquare, Save, Search, Trash, Trash2, X, XCircle, XSquare } from "lucide-react";
 import AdminCategoryItem from "./AdminCategoryItem";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { getUri } from "../js/site"
 import { toast, ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
-import { FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Button, FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import React from 'react'
+import Sawl from 'sweetalert2';
 import { useManager } from "./AdminContext";
 
 const textfieldConfig = {
@@ -359,6 +360,32 @@ function AdminProduct() {
                                         onChange={(e) => {
                                             setProductSelect({ ...productSelect, description: e.target.value }); // Cập nhật state
                                         }} />
+                                </div>
+                                <div className="admin-product-detail-row">
+                                    <div style={{ width: "100%", display: "flex", gap: "10px", justifyContent: "end" }}>
+                                        <Button onClick={() => {
+                                            Sawl.fire({
+                                                title: "Bạn có chắc chắn?",
+                                                text: "Xóa sản phẩm " + productSelect.display_name,
+                                                icon: "info",
+                                                showCancelButton: true,
+                                                confirmButtonText: "Xóa",
+                                                cancelButtonText: "Hủy",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    axios.post(getUri() + "/products-delete", { productId: productSelect.product_id }, { withCredentials: true }).then((res) => {
+                                                        productManager.onTrigger(Math.floor(Math.random() * 10));
+                                                    }).catch((err) => {
+                                                        toast.error("Lỗi khi xóa sản phẩm", { position: "top-right" })
+                                                    })
+                                                }
+                                            })
+                                        }} style={{ backgroundColor: "rgb(224, 49, 49)" }}><XCircle color="white" /></Button>
+                                        <Button onClick={updateProductHandle} fullWidth style={{ backgroundColor: "rgb(42, 164, 52)" }}><Save color="white" /></Button>
+                                    </div>
+                                </div>
+                                <div style={{ height: "100px" }}>
+
                                 </div>
                             </div>
 

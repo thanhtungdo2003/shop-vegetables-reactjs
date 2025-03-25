@@ -263,6 +263,13 @@ main {
   display: flex;
   gap: 10px;
 }
+.product-item-prop{
+  margin: auto auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 
 .product-item-img-container {
   margin: 2.5px auto;

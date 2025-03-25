@@ -42,10 +42,10 @@ function ProductItem({id, displayName, categoryName, price, img, categorySlug })
                 <div className="product-item-img-container">
                     <img className="product-item-img" src={img} />
                 </div>
-                <div style={{ paddingLeft: "5px" }}>
+                <div>
                     <div className="product-item-prop" style={{ fontSize: "18px" }}>{displayName}</div>
                     <div className="product-item-prop" style={{ fontSize: "12px", color: "#454545" }}>{categoryName}</div>
-                    <div className="product-item-prop" style={{ fontSize: "14px", color: "rgb(255, 124, 1)" }}>{"đ " + price.toLocaleString('de-DE')}</div>
+                    <div className="product-item-prop" style={{ fontSize: "19px", fontWeight:"550", color: "rgb(255, 124, 1)" }}>{"đ " + price.toLocaleString('de-DE')}</div>
                 </div>
             </ContainerStyled>
         </>
